@@ -11,6 +11,7 @@ class Message : public QObject
   Q_PROPERTY(QString author READ author WRITE setAuthor NOTIFY authorChanged)
   Q_PROPERTY(QDateTime creationDate READ creationDate WRITE setCreationDate NOTIFY creationDateChanged)
   QML_ELEMENT
+  // QML_UNCREATABLE("Type is rendered uncreatable with QML_UNCREATABLE") // render this type uncreatable with this line
 public:
   explicit Message(QObject *parent = nullptr);
   QString author() const;
