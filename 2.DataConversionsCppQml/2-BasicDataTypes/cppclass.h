@@ -12,10 +12,12 @@
 #include <QSizeF>
 #include <QRect>
 #include <QRectF>
+#include <QtQml/qqmlregistration.h>
 
 class CppClass : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit CppClass(QObject *parent = nullptr);
 
