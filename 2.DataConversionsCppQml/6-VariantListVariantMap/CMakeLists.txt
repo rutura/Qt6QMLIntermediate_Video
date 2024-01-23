@@ -8,13 +8,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(app6-VariantListVariantMap
-    main.cpp cppclass.h cppclass.cpp
+    main.cpp
 )
 
 qt_add_qml_module(app6-VariantListVariantMap
-    URI 6-VariantListVariantMap
+    URI VariantListVariantMap
     VERSION 1.0
     QML_FILES main.qml 
+    SOURCES cppclass.h cppclass.cpp
 )
 
 set_target_properties(app6-VariantListVariantMap PROPERTIES

@@ -20,6 +20,7 @@
 
 import QtQuick
 import QtQuick.Controls
+import VariantListVariantMap 1.0
 
 Window {
     width: 640
@@ -39,7 +40,6 @@ Window {
         }
 
     }
-
 
     Button{
         id : button1
