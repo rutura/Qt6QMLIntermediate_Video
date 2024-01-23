@@ -12,12 +12,12 @@ qt_add_executable(app9-RegistrableValueTypes
     main.cpp
 )
 
-add_subdirectory(module)
-
 qt_add_qml_module(app9-RegistrableValueTypes
     URI ${PROJECT_NAME}
     VERSION 1.0
     RESOURCE_PREFIX /
+    SOURCES
+        person.h person.cpp 
     QML_FILES
         Main.qml
     OUTPUT_DIRECTORY
@@ -37,7 +37,7 @@ set_target_properties(app9-RegistrableValueTypes PROPERTIES
 )
 
 target_link_libraries(app9-RegistrableValueTypes
-    PRIVATE Qt6::Quick myModuleLibplugin
+    PRIVATE Qt6::Quick
 )
 
 include(GNUInstallDirs)

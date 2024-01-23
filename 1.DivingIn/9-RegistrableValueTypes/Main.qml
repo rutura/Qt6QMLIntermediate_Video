@@ -1,5 +1,4 @@
 import QtQuick
-import myModule 1.0
 
 Window {
     width: 640
