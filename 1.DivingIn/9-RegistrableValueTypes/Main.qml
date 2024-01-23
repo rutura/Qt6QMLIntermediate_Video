@@ -7,6 +7,6 @@ Window {
     title: qsTr("9-RegistrableValueTypes")
 
     Component.onCompleted: {
-        console.log("Person value: " + person.isIll);
+        console.log("Person value: " + Person.isIll);
     }
 }

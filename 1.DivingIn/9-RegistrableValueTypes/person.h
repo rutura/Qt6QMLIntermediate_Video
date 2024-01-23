@@ -23,4 +23,7 @@ private:
   QString mFirstName{"Amilie"};
   QString mLastName{"John"};
 };
+
+Q_DECLARE_METATYPE(Person)
+
 #endif// PERSON_H
