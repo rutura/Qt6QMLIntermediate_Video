@@ -12,6 +12,7 @@
 
 import QtQuick
 import QtQuick.Controls
+import TimeAndDateTime 1.0
 
 Window {
     width: 640
@@ -22,10 +23,10 @@ Window {
     property string mValue: "Clicked %1 times, double is %2"
     property int clickCount: 0
 
-    Connections{
-        target: CppClass
+    CppClass {
+        id: cppClassId
         //Receiving data from C++
-        function onSendDateTime (datetimeparam)
+        onSendDateTime:  (datetimeparam) =>
         {
             console.log("Received datetime :"+ datetimeparam);
             //Extract info
@@ -33,24 +34,41 @@ Window {
             console.log("...",datetimeparam.toGMTString())
         }
 
-        function onSendTime(timeparam){
+        onSendTime: (timeparam)=>{
             console.log("Received time :"+ timeparam);
 
         }
     }
+
+    // Connections{
+    //     target: CppClass
+    //     //Receiving data from C++
+    //     function onSendDateTime (datetimeparam)
+    //     {
+    //         console.log("Received datetime :"+ datetimeparam);
+    //         //Extract info
+    //         console.log("Year :" + datetimeparam.getFullYear())
+    //         console.log("...",datetimeparam.toGMTString())
+    //     }
+
+    //     function onSendTime(timeparam){
+    //         console.log("Received time :"+ timeparam);
+
+    //     }
+    // }
 
     Button{
         id : mButton
         text : "Click Me"
         onClicked: {
             //Receiving data from C++
-            //CppClass.cppSlot()
+            cppClassId.cppSlot()
 
 
             //Sending data to C++
             var date = new Date()
-            //CppClass.timeSlot(date);
-            //CppClass.dateTimeSlot(date)
+            cppClassId.timeSlot(date);
+            cppClassId.dateTimeSlot(date)
 
             //String formatting
             clickCount++

@@ -182,9 +182,9 @@ Window {
            text : "Click Me"
            onClicked: {
                // cppClassId.cppSlot()
-               cppClassId.receivePoint(Qt.point(200,300))
+               // cppClassId.receivePoint(Qt.point(200,300))
                // CppClass.receiveRect(Qt.rect(40.10,40,100,100))// will throw an error
-               // cppClassId.receiveRect(Qt.rect(40.10,40,100,100))
+               cppClassId.receiveRect(Qt.rect(40.10,40,100,100))
            }
        }
 }
