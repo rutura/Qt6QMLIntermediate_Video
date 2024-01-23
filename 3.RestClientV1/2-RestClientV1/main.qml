@@ -16,6 +16,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import RestClientV1 1.0
 
 Window {
     id : root

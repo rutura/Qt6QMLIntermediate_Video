@@ -49,7 +49,7 @@ bool AppWrapper::initialize(QGuiApplication * app)
     mEngine.rootContext()->setContextProperty("Wrapper",this);
     resetModel();
 
-    const QUrl url(u"qrc:/2-RestClientV1/main.qml"_qs);
+    const QUrl url(u"qrc:/RestClientV1/main.qml"_qs);
     QObject::connect(&mEngine, &QQmlApplicationEngine::objectCreated,
                      app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
