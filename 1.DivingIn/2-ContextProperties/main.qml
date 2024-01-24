@@ -24,6 +24,7 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
+import QtQuick.Layouts
 
 Window {
     visible: true
@@ -32,31 +33,81 @@ Window {
     title: qsTr("Call C++ from QML")
 
     Column {
+        spacing: 10
+        Row {
             spacing: 10
-            Button{
-                text : "Call C++ Method"
-                onClicked: {
-                    BWorker.regularMethod()
-                    BWorker.cppSlot()
-                }
-            }
-            Rectangle {
-                width: textToShowId.implicitWidth + 20
-                height: 50
-                color: "beige"
-                Text{
-                    id : textToShowId
-                    text : BWorker.regularMethodWithReturn("John", 25)
-                }
+            anchors.right: parent.right
+            Text {
+                text: qsTr("regularMethod()")
             }
 
+            Button {
+                text: "Call C++ method"
+                onClicked: {
+                    BWorker.regularMethod();
+                }
+            }
         }
+        Row {
+            spacing: 10
+            anchors.right: parent.right
+            Text {
+                text: qsTr("cppSlot()")
+            }
+
+            Button {
+                text: "Call C++ slot"
+                onClicked: {
+                    BWorker.cppSlot();
+                }
+            }
+        }
+        Row {
+            spacing: 10
+            anchors.right: parent.right
+            Text {
+                id: returnTextId
+                text: qsTr("return")
+            }
+
+            Text {
+                text: "regularMethodWithReturn("
+            }
+            TextField {
+                id: nameFieldId
+                placeholderText: qsTr("name")
+                text: qsTr("John")
+            }
+            Text {
+                text: qsTr(",")
+            }
+            TextField {
+                id: ageFieldId
+                placeholderText: qsTr("age")
+                inputMethodHints: Qt.ImhDigitsOnly
+                text: qsTr("25")
+            }
+            Text {
+                text: qsTr(")")
+            }
+            Button {
+                text: qsTr("Call C++ method")
+                onClicked: {
+                    if (nameFieldId.text !== null && ageFieldId.text !== null) {
+                        var response = BWorker.regularMethodWithReturn(nameFieldId.text, parseInt(ageFieldId.text));
+                        returnTextId.text = response;
+                    } else {
+                        console.log("One of the two required fields is empty");
+                    }
+                }
+            }
+        }
+    }
 
     /*
     Other{
 
     }
     */
-
 
 }
