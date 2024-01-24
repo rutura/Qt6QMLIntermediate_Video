@@ -4,10 +4,12 @@
 #include <QObject>
 #include <QDateTime>
 #include <QTime>
+#include <QtQml/qqmlregistration.h>
 
 class CppClass : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit CppClass(QObject *parent = nullptr);
 

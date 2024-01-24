@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     CppClass cppClass;
     engine.rootContext()->setContextProperty("CppClass",&cppClass);
-    const QUrl url(u"qrc:/2-BasicDataTypes/main.qml"_qs);
+    const QUrl url(u"qrc:/BasicDataTypes/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

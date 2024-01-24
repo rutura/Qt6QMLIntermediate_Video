@@ -8,13 +8,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(app2-BasicDataTypes
-    main.cpp cppclass.h cppclass.cpp
+    main.cpp
 )
 
 qt_add_qml_module(app2-BasicDataTypes
-    URI 2-BasicDataTypes
+    URI BasicDataTypes
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES main.qml
+    SOURCES  cppclass.h cppclass.cpp
 )
 
 set_target_properties(app2-BasicDataTypes PROPERTIES

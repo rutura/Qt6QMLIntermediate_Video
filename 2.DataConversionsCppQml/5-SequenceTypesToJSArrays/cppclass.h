@@ -3,10 +3,12 @@
 
 #include <QObject>
 #include <QVector>
+#include <QtQml/qqmlregistration.h>
 
 class CppClass : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit CppClass(QObject *parent = nullptr);
 

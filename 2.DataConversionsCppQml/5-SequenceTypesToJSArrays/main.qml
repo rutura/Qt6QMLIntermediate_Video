@@ -39,6 +39,7 @@
 
 import QtQuick
 import QtQuick.Controls
+import SequenceTypesToJSArrays 1.0
 
 Window {
     width: 640
@@ -46,12 +47,17 @@ Window {
     visible: true
     title: qsTr("Sequence Demo")
 
+    CppClass {
+        id: cppClassId
+    }
+
     Button{
         id : mButton1
         text : "Send to C++"
         onClicked: {
             var arr = ['Apple', 'Banana','Avocado','Pear','Orange'];
-            CppClass.qmlArrayToCpp(arr)
+            cppClassId.qmlArrayToCpp(arr)
+             // CppClass.qmlArrayToCpp(arr)
         }
     }
 
@@ -60,7 +66,8 @@ Window {
         anchors.top: mButton1.bottom
         text : "Read from C++"
         onClicked: {
-            var arr = CppClass.retrieveStrings();
+            var arr = cppClassId.retrieveStrings();
+            // var arr = CppClass.retrieveStrings();
             print("The length is : "+ arr.length)
 
             arr.forEach(function(element){
