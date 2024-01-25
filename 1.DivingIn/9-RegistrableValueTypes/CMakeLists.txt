@@ -13,7 +13,7 @@ qt_add_executable(app9-RegistrableValueTypes
 )
 
 qt_add_qml_module(app9-RegistrableValueTypes
-    URI ${PROJECT_NAME}
+    URI RegistrableValueTypes
     VERSION 1.0
     RESOURCE_PREFIX /
     SOURCES
