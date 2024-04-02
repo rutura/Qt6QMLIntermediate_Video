@@ -50,8 +50,8 @@ Window {
         Text {
             id : titleId
             width: 500
-            //text : Movie === null ? "" : Movie.title
-            text : Movie.title
+            text : Movie === null ? "" : Movie.title
+            //text : Movie.title
             font.pointSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -60,8 +60,8 @@ Window {
         Text {
             id : mainCharId
             width: 500
-            //text : Movie === null ? "" : Movie.mainCharacter
-            text : Movie.mainCharacter
+            text : Movie === null ? "" : Movie.mainCharacter
+            //text : Movie.mainCharacter
             font.pointSize: 20
             anchors.horizontalCenter: parent.horizontalCenter
         }

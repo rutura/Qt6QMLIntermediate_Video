@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(app2-ContextProperties
-    main.cpp cppworker.cpp
+    main.cpp cppworker.h cppworker.cpp
 )
 
 qt_add_qml_module(app2-ContextProperties

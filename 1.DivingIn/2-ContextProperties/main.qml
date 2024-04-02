@@ -18,6 +18,10 @@
                     . main.qml : show this
                     . Other.qml : Show this.
 
+            . Things to keep in mind:
+                    . The object is created on the C++ side
+                    . It is available whether the QML code actually uses it or not.
+
 
   */
 

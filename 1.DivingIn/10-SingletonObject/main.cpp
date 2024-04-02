@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "mysingleton.h"
 
 
 int main(int argc, char *argv[])
@@ -7,7 +8,11 @@ int main(int argc, char *argv[])
   QGuiApplication app(argc, argv);
 
   QQmlApplicationEngine engine;
-  const QUrl url(u"qrc:/10-SingletonObject/Main.qml"_qs);
+
+  MySingleTon * singleton = new MySingleTon(&app);
+  qmlRegisterSingletonInstance("com.blikoon.Singletons", 1, 0, "MySingleTon", singleton);
+
+  const QUrl url(u"qrc:/SingletonObject/Main.qml"_qs);
   QObject::connect(
     &engine,
     &QQmlApplicationEngine::objectCreationFailed,

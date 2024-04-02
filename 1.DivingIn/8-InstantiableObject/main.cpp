@@ -1,13 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "movie.h"
 
 
 int main(int argc, char *argv[])
 {
   QGuiApplication app(argc, argv);
 
+  qmlRegisterType<Movie>("com.blikoon.movie",1,0,"Movie");
+
   QQmlApplicationEngine engine;
-  const QUrl url(u"qrc:/8-InstantiableObject/Main.qml"_qs);
+  const QUrl url(u"qrc:/InstantiableObject/Main.qml"_qs);
   QObject::connect(
     &engine,
     &QQmlApplicationEngine::objectCreationFailed,
