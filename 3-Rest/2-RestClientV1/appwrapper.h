@@ -9,18 +9,14 @@
 #include <QGuiApplication>
 #include <memory>
 
-
 class AppWrapper : public QObject
 {
     Q_OBJECT
 public:
     explicit AppWrapper(QObject *parent = nullptr);
     ~AppWrapper();
-
     Q_INVOKABLE void fetchPosts();
-
     Q_INVOKABLE void removeLast();
-
     bool initialize( QGuiApplication * app);
 
 private slots:
@@ -28,17 +24,10 @@ private slots:
     void dataReadFinished();
 
 private:
-
     void resetModel () ;
-
-    //QNetworkAccessManager * mNetManager;
-    std::unique_ptr<QNetworkAccessManager> mNetManager; // Use unique_ptr for ownership
-
-    QNetworkReply* mNetReply; // No need for a raw pointer
+    std::unique_ptr<QNetworkAccessManager> mNetManager;
+    QNetworkReply* mNetReply;
     QByteArray mDataBuffer;
-
-    //QNetworkReply * mNetReply;
-    //QByteArray * mDataBuffer;
     QStringList mPosts;
     QQmlApplicationEngine mEngine;
 };

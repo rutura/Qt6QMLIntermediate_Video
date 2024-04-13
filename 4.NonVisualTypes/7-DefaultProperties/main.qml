@@ -95,9 +95,6 @@ Window {
                 position: "None"
                 playing: false
             }
-
-
-
         ]
     }
 
@@ -135,7 +132,7 @@ Window {
 
     ListView {
         anchors.fill: parent
-        model : team2.players
+        model : team1.players
         delegate: Rectangle{
             width: parent.width
             height: 50

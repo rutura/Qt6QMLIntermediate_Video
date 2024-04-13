@@ -96,7 +96,7 @@ Window {
            color: "yellowgreen"
 
            Timer.running : true
-           Timer.interval : 500
+           Timer.interval : 1000
            Timer.onTimerOut : {
                console.log("Timer out for rect")
            }

@@ -5,6 +5,7 @@
 #include <QtQml>
 #include <QTimer>
 
+//The attached class
 class TimerAttached : public QObject
 {
     Q_OBJECT

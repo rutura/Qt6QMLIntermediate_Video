@@ -6,6 +6,7 @@
 #include <qqml.h>
 #include "timerattached.h"
 
+//The attaching class: what we reference in QML files.
 class Timer : public QObject
 {
     Q_OBJECT

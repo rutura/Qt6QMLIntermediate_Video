@@ -45,7 +45,7 @@ Window {
         Rectangle{
             width: 200
             height: 200
-            radius: 20
+            radius: 10
             color: (mCounter.count >= 0) ? "green": "red"
 
             Text {

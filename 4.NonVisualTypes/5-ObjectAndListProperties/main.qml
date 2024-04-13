@@ -72,9 +72,6 @@ Window {
                    position: "None"
                    playing: false
                }
-
-
-
            ]
        }
 
@@ -95,7 +92,6 @@ Window {
                }
            }
        }
-
 
        Component.onCompleted: {
            console.log("We have :" + team1.players.length + " players in the team "+ team1.title)

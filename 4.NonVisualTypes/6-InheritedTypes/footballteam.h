@@ -45,18 +45,12 @@ signals:
     void captainChanged(Player * captain);
     void playersChanged();
 
-
-
-
 private:
     //Callback Methods
     static void appendPlayer(QQmlListProperty<Player>*, Player*);
     static qsizetype playerCount(QQmlListProperty<Player>*);
     static Player* player(QQmlListProperty<Player>*, qsizetype);
     static void clearPlayers(QQmlListProperty<Player>*);
-
-
-
 
     QString m_title;
     QString m_coatch;

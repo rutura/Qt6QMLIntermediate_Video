@@ -111,9 +111,6 @@ Window {
                 position: "None"
                 playing: false
             }
-
-
-
         ]
     }
 

@@ -15,10 +15,6 @@ AppWrapper::AppWrapper(QObject* parent) : QObject(parent),
 
 AppWrapper::~AppWrapper()
 {
-    //Release the memory
-    //delete mDataBuffer;
-    //Who owns this reply object, our app ?
-    //delete mNetReply;
 }
 
 void AppWrapper::fetchPosts()
@@ -88,20 +84,16 @@ void AppWrapper::dataReadFinished()
 
             //Turn document into json array
             QJsonArray array = doc.array();
-
             for ( int i = 0; i < array.size(); i++)
             {
                 QJsonObject object = array.at(i).toObject();
                 QVariantMap map = object.toVariantMap();
                 QString title = map["title"].toString();
                 mPosts.append(title);
-
             }
-
             if(array.size() !=0){
                 resetModel();
             }
-
             //Clear the buffer
             mDataBuffer.clear();
          }
@@ -110,5 +102,4 @@ void AppWrapper::dataReadFinished()
 void AppWrapper::resetModel()
 {
     mEngine.rootContext()->setContextProperty("myModel",QVariant::fromValue(mPosts));
-
 }

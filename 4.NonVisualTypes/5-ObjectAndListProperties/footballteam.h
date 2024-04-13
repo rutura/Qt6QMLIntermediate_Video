@@ -42,9 +42,6 @@ signals:
     void captainChanged(Player * captain);
     void playersChanged();
 
-
-
-
 private:
     //Callback Methods
     static void appendPlayer(QQmlListProperty<Player>*, Player*);
