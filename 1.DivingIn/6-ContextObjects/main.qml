@@ -29,7 +29,6 @@ Window {
     visible: true
     title: qsTr("ContextObject demo")
 
-
     Rectangle {
            id : mRect1
            width: mText1.implicitWidth + 20

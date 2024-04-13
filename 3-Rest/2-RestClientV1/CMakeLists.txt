@@ -5,7 +5,7 @@ project(2-RestClientV1 VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.2 COMPONENTS Quick Network REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Quick Network QuickControls2 REQUIRED)
 
 qt_add_executable(app2-RestClientV1
     main.cpp
@@ -29,4 +29,4 @@ set_target_properties(app2-RestClientV1 PROPERTIES
 target_compile_definitions(app2-RestClientV1
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(app2-RestClientV1
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick Qt6::QuickControls2)

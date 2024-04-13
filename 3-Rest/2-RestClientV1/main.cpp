@@ -1,10 +1,13 @@
 #include <QGuiApplication>
+#include <QQuickStyle>
 #include "appwrapper.h"
 
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    QQuickStyle::setStyle("Material");
 
     AppWrapper wrapper;
 

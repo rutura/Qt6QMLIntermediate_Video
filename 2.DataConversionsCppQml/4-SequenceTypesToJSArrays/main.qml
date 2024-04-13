@@ -7,7 +7,7 @@
          . Most of them map to simple JS arrays on the QML side.
 
          . We  :
-            . Send sequence data to C++ :
+            . Send sequence data to C++ from QML :
                 Button{
                     id : mButton1
                     text : "Send to C++"
@@ -17,7 +17,7 @@
                     }
                 }
 
-            . Receive sequence data from C++ :
+            . Receive sequence data on the C++ side from C++ :
 
                 Button{
                     id : mButton2
@@ -39,6 +39,7 @@
 
 import QtQuick
 import QtQuick.Controls
+import SequenceTypesToJSArrays
 
 Window {
     width: 640
@@ -56,7 +57,6 @@ Window {
         onClicked: {
             var arr = ['Apple', 'Banana','Avocado','Pear','Orange'];
             cppClassId.qmlArrayToCpp(arr)
-             // CppClass.qmlArrayToCpp(arr)
         }
     }
 
@@ -66,7 +66,6 @@ Window {
         text : "Read from C++"
         onClicked: {
             var arr = cppClassId.retrieveStrings();
-            // var arr = CppClass.retrieveStrings();
             print("The length is : "+ arr.length)
 
             arr.forEach(function(element){

@@ -21,6 +21,7 @@ Window {
     title: qsTr("C++ Signal Handled in QML")
 
     Connections{
+        //CppSignal sender is an object created and exposed from the C++ side of things
         target: CppSignalSender
         function onCallQml (parameter) {
             console.log("This is QML : callQml signal cought")
@@ -37,7 +38,7 @@ Window {
             width: 200
             height: 200
             color: "red"
-            radius: 20
+            radius: 10
 
             Text{
                 id : mRectText

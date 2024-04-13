@@ -8,10 +8,12 @@ int main(int argc, char *argv[])
 {
   QGuiApplication app(argc, argv);
 
+  //Class object created on the C++ side
   CppWorker worker;
 
   QQmlApplicationEngine engine;
 
+  //Class object is exposed to the QML side
   engine.rootContext()->setContextProperty("BWorker", &worker);
 
   const QUrl url(u"qrc:/2-ContextProperties/main.qml"_qs);

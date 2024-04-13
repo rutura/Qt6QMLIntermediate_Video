@@ -12,7 +12,7 @@
 
 import QtQuick
 import QtQuick.Controls
-//import TimeAndDateTime 1.0
+import TimeAndDateTime 1.0
 
 Window {
     width: 640
@@ -40,22 +40,6 @@ Window {
         }
     }
 
-    // Connections{
-    //     target: CppClass
-    //     //Receiving data from C++
-    //     function onSendDateTime (datetimeparam)
-    //     {
-    //         console.log("Received datetime :"+ datetimeparam);
-    //         //Extract info
-    //         console.log("Year :" + datetimeparam.getFullYear())
-    //         console.log("...",datetimeparam.toGMTString())
-    //     }
-
-    //     function onSendTime(timeparam){
-    //         console.log("Received time :"+ timeparam);
-
-    //     }
-    // }
 
     Button{
         id : mButton
@@ -66,13 +50,17 @@ Window {
 
 
             //Sending data to C++
+            /*
             var date = new Date()
             cppClassId.timeSlot(date);
             cppClassId.dateTimeSlot(date)
+            */
 
             //String formatting
+            /*
             clickCount++
             mButton.text = mValue.arg(clickCount).arg(clickCount*2)
+            */
 
         }
     }

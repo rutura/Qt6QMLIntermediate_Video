@@ -15,6 +15,11 @@
 
     . Use the qt 5 course and improvise.
 
+    . ATTENTION:
+        . Here, for some reason, when I use QML_ELEMENT to expose the thing, it doesn't work when we call
+            the JS function from C++. I am going to just avoid that and only  use context properties and
+            fucus on sending variantlist and variantmap data back and forth.
+
 
   */
 

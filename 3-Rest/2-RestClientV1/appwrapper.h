@@ -7,13 +7,12 @@
 #include <QNetworkRequest>
 #include <QQmlApplicationEngine>
 #include <QGuiApplication>
+#include <memory>
 
 
 class AppWrapper : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
-    QML_SINGLETON
 public:
     explicit AppWrapper(QObject *parent = nullptr);
     ~AppWrapper();
@@ -32,9 +31,14 @@ private:
 
     void resetModel () ;
 
-    QNetworkAccessManager * mNetManager;
-    QNetworkReply * mNetReply;
-    QByteArray * mDataBuffer;
+    //QNetworkAccessManager * mNetManager;
+    std::unique_ptr<QNetworkAccessManager> mNetManager; // Use unique_ptr for ownership
+
+    QNetworkReply* mNetReply; // No need for a raw pointer
+    QByteArray mDataBuffer;
+
+    //QNetworkReply * mNetReply;
+    //QByteArray * mDataBuffer;
     QStringList mPosts;
     QQmlApplicationEngine mEngine;
 };

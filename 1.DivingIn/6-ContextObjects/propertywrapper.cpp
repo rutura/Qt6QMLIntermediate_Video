@@ -9,7 +9,6 @@ PropertyWrapper::PropertyWrapper(QObject *parent) : QObject(parent),
     m_timer(new QTimer(this)),
     m_random_number(0)
 {
-
     //Initialize
     srand(static_cast<unsigned int>(time(nullptr)));
 
@@ -22,9 +21,7 @@ PropertyWrapper::PropertyWrapper(QObject *parent) : QObject(parent),
         setFirstname(list[m_random_number]);
 
     });
-
     m_timer->start(1000);
-
 }
 
 QString PropertyWrapper::lastname() const

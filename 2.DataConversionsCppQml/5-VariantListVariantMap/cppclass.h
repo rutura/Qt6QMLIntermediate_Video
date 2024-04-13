@@ -10,8 +10,6 @@
 class CppClass : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
-    QML_SINGLETON
 public:
     explicit CppClass(QObject *parent = nullptr);
 

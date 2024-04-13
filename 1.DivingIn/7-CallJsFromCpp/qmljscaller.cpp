@@ -20,8 +20,6 @@ void QmlJSCaller::setQmlRootObject(QObject *value)
 
 void QmlJSCaller::callJSMethod(QString param)
 {
-
-
     QVariant returnedValue;
     QVariant cppParameter = QVariant::fromValue(param);
 

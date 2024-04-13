@@ -6,20 +6,19 @@
 #include <QDebug>
 #include "appwrapper.h"
 
-AppWrapper::AppWrapper(QObject *parent) : QObject(parent),
-    mNetManager(new QNetworkAccessManager(this)),
-    mNetReply(nullptr),
-    mDataBuffer(new QByteArray)
-{
 
+
+AppWrapper::AppWrapper(QObject* parent) : QObject(parent),
+    mNetManager(std::make_unique<QNetworkAccessManager>()) // Use make_unique
+{
 }
 
 AppWrapper::~AppWrapper()
 {
     //Release the memory
-    delete mDataBuffer;
+    //delete mDataBuffer;
     //Who owns this reply object, our app ?
-    delete mNetReply;
+    //delete mNetReply;
 }
 
 void AppWrapper::fetchPosts()
@@ -65,7 +64,7 @@ bool AppWrapper::initialize(QGuiApplication * app)
 
 void AppWrapper::dataReadyRead()
 {
-    mDataBuffer->append(mNetReply->readAll());
+    mDataBuffer.append(mNetReply->readAll());
 }
 
 void AppWrapper::dataReadFinished()
@@ -79,7 +78,7 @@ void AppWrapper::dataReadFinished()
             //qDebug() << "Data fetch finished : " << QString(*mDataBuffer);
 
             //Turn the data into a json document
-            QJsonDocument doc = QJsonDocument::fromJson(*mDataBuffer);
+            QJsonDocument doc = QJsonDocument::fromJson(mDataBuffer);
 
             /*
             //What if you get an object from the server
@@ -104,7 +103,7 @@ void AppWrapper::dataReadFinished()
             }
 
             //Clear the buffer
-            mDataBuffer->clear();
+            mDataBuffer.clear();
          }
 }
 

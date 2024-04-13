@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     CppClass cppClass;
-    //engine.rootContext()->setContextProperty("CppClass",&cppClass);
+    engine.rootContext()->setContextProperty("CppClass",&cppClass);
 
     const QUrl url(u"qrc:/VariantListVariantMap/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

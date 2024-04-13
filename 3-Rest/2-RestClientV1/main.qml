@@ -58,7 +58,7 @@ Window {
 
 
            Button {
-               id : mButton1
+               id : button1Id
                text : "Fetch"
                Layout.fillWidth: true
                onClicked: {
@@ -67,7 +67,7 @@ Window {
 
            }
            Button {
-               id : mButton2
+               id : button2Id
                text : "RemoveLast"
                Layout.fillWidth: true
                onClicked: {

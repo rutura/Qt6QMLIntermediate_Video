@@ -50,6 +50,7 @@ void CppClass::setQmlRootObject(QObject *value)
 
 void CppClass::triggerJSCall()
 {
+    qDebug() << "Calling JS";
     QVariantList list;//array
     list << 123.3 << QColor(Qt::cyan) << "Qt is great" << 10;
 
@@ -65,5 +66,6 @@ void CppClass::triggerJSCall()
     QMetaObject::invokeMethod(qmlRootObject, "arrayObjectFunc",
                               Q_ARG(QVariant, QVariant::fromValue(list)),
                               Q_ARG(QVariant, QVariant::fromValue(map)));
+    qDebug() << "Called JS";
 
 }

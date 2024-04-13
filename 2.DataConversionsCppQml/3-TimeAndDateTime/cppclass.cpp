@@ -9,8 +9,8 @@ CppClass::CppClass(QObject *parent) : QObject(parent)
 void CppClass::cppSlot()
 {
     qDebug() << "C++ here, cppSlot called";
-    //emit sendDateTime(QDateTime::currentDateTime());
-    emit sendTime(QTime::currentTime());
+    emit sendDateTime(QDateTime::currentDateTime());
+    //emit sendTime(QTime::currentTime());
 
 }
 

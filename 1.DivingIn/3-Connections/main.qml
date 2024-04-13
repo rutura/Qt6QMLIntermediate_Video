@@ -36,9 +36,11 @@ Window {
                 MouseArea{
                     id : redRectMouseAreaId
                     anchors.fill: parent
+                    /*
                     onClicked: {
                         console.log("Clicked in the red rectangle")
                     }
+                    */
                 }
             }
 
@@ -54,8 +56,6 @@ Window {
                         console.log("This is green rect responding")
                     }
                 }
-
-
             }
 
             Rectangle{
@@ -69,10 +69,7 @@ Window {
                     function onClicked() {
                         console.log("This is blue rect responding")
                     }
-
                 }
-
-
             }
         }
 }
