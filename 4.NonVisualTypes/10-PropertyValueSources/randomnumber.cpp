@@ -6,7 +6,7 @@ RandomNumber::RandomNumber(QObject *parent) : QObject(parent),
     m_timer(new QTimer(this))
 {
     connect(m_timer,SIGNAL(timeout()),this,SLOT(updateProperty()));
-    m_timer->start(1500);
+    m_timer->start(500);
 }
 
 void RandomNumber::setTarget(const QQmlProperty &prop)

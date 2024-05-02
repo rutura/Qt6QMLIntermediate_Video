@@ -1,32 +1,29 @@
 import QtQuick
 import QtQuick.Controls
-import myModule 1.0
+//import InstantiableObject
+import guide.learnqt.movie
 
 Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("8-InstantableObject")
+    title: qsTr("Instantiable object")
 
-    Message {
-        id: messageId
-        author: "Amelie"
-        creationDate: new Date()
-
-        onAuthorChanged: newAuthor => {
-            console.log("New author: " + newAuthor);
-        }
-        onCreationDateChanged: newDateTime => {
-            console.log("New Datetime: " + newDateTime);
-        }
+    //Object created on the QML side
+    Movie{
+        id: movieId
+        title: "Titanic"
+        mainCharacter: "Leonardo D"
     }
+
     Button {
         text: "Invoke created object"
         onClicked: {
-            messageId.author = "newAmelie";
-            messageId.creationDate = new Date(8.64e15);
+            movieId.title = "Fast and Furious"
+            movieId.mainCharacter = "Vin Diesel"
 
-            // console.log("New " + messageId.author +" , " + messageId.creationDate);
+            console.log("New " + movieId.title +" , " + movieId.mainCharacter);
         }
     }
+
 }

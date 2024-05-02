@@ -6,29 +6,24 @@
 class Movie : public QObject
 {
     Q_OBJECT
-
-    Q_PROPERTY(QString mainCharacter READ mainCharacter WRITE setMainCharacter NOTIFY mainCharacterChanged)
-    Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
-
-
+    Q_PROPERTY(QString mainCharacter READ mainCharacter WRITE setMainCharacter NOTIFY mainCharacterChanged )
+    Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged )
 public:
     explicit Movie(QObject *parent = nullptr);
 
     QString mainCharacter() const;
-    void setMainCharacter(QString mainCharacter);
+    void setMainCharacter(const QString &newMainCharacter);
 
     QString title() const;
-    void setTitle(QString title);
+    void setTitle(const QString &newTitle);
 
 signals:
-
-    void mainCharacterChanged(QString mainCharacter);
-
-    void titleChanged(QString title);
+    void mainCharacterChanged();
+    void titleChanged();
 
 private:
-    QString m_title;
     QString m_mainCharacter;
+    QString m_title;
 };
 
 #endif // MOVIE_H

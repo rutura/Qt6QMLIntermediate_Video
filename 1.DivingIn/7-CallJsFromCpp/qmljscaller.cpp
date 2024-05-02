@@ -1,11 +1,10 @@
-#include <QDebug>
-#include <QVariant>
 #include "qmljscaller.h"
+#include <QVariant>
+#include <QDebug>
 
-QmlJSCaller::QmlJSCaller(QObject *parent) : QObject(parent)
-{
-
-}
+QmlJSCaller::QmlJSCaller(QObject *parent)
+    : QObject{parent}
+{}
 
 void QmlJSCaller::cppMethod(QString parameter)
 {
@@ -13,15 +12,13 @@ void QmlJSCaller::cppMethod(QString parameter)
     callJSMethod(parameter);
 }
 
-void QmlJSCaller::setQmlRootObject(QObject *value)
+void QmlJSCaller::setQmlRoostObject(QObject *value)
 {
     qmlRootObject = value;
 }
 
 void QmlJSCaller::callJSMethod(QString param)
 {
-
-
     QVariant returnedValue;
     QVariant cppParameter = QVariant::fromValue(param);
 
@@ -29,7 +26,6 @@ void QmlJSCaller::callJSMethod(QString param)
                               Q_RETURN_ARG(QVariant,returnedValue),
                               Q_ARG(QVariant,cppParameter));
 
-     qDebug() << "C++ talking, done calling QML Javascript, the return value is :"
-              << returnedValue.toString();
-
+    qDebug() << "C++ talking, done calling QML Javascript, the return value is :"
+             << returnedValue.toString();
 }

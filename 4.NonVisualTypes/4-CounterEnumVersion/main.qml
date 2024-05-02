@@ -1,74 +1,67 @@
-/*
-        . A counter version that uses enums to control wheter
-            we count up or down.
-
-
-  */
-
 import QtQuick
 import QtQuick.Controls
-import com.blikoon.counter
+import CounterEnumVersion
 
 Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Register Non Visual Type")
+    title: qsTr("Counter Enum Version")
 
-       Counter{
-           id : mCounter
-       }
+    Counter{
+        id: counterId
+    }
 
-       Column{
-           anchors.centerIn: parent
-           spacing: 10
+    Column{
+        anchors.centerIn: parent
+        spacing: 10
 
-           Rectangle{
-               width: 200
-               height: 200
-               radius: 20
-               color: (mCounter.count >= 0) ? "green": "red"
+        Rectangle{
+            width: 200
+            height: 200
+            radius: 20
+            color: (counterId.count >= 0) ? "green": "red"
 
-               Text {
-                   id: mText
-                   text: mCounter.count
-                   anchors.centerIn: parent
-                   font.pointSize: 40
-                   color: "white"
-               }
-           }
+            Text {
+                id: mText
+                text: counterId.count
+                anchors.centerIn: parent
+                font.pointSize: 40
+                color: "white"
+            }
+        }
 
-           Button{
-               width: 200
-               text : "Start"
-               onClicked: {
-                   mCounter.start()
-               }
-           }
-           Button{
-               width: 200
-               text : "Stop"
-               onClicked: {
-                   mCounter.stop()
-               }
-           }
+        Button{
+            width: 200
+            text : "Start"
+            onClicked: {
+                counterId.start()
+            }
+        }
+        Button{
+            width: 200
+            text : "Stop"
+            onClicked: {
+                counterId.stop()
+            }
+        }
 
-           Button{
-               width: 200
-               text : "Up"
-               onClicked: {
+        Button{
+            width: 200
+            text : "Up"
+            onClicked: {
 
-                   mCounter.counting = Counting.UP
-               }
-           }
+                counterId.counting = Counting.UP
+            }
+        }
 
-           Button{
-               width: 200
-               text : "Down"
-               onClicked: {
+        Button{
+            width: 200
+            text : "Down"
+            onClicked: {
 
-                   mCounter.counting = Counting.DOWN
-               }
-           }
-       }
+                counterId.counting = Counting.DOWN
+            }
+        }
+    }
 }

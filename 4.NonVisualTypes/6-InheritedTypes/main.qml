@@ -1,26 +1,11 @@
-/*
-
-        . Exploring how to work with object and list properties
-            when inheritance hierarchies are involved.
-
-        . Pull from the Qt 5 Course and improvise.
-
-        . ATTENTION : Don't make the project name too long otherwise
-            Qt creator is going to fail to build the thing for some
-            unknown reason.
-
-  */
-
-
 import QtQuick
-import com.blikoon.Football 1.0
-
+import InheritedTypes
 
 Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Working with inherited types")
+    title: qsTr("Inherited List Properties")
 
     FootBallTeam {
         id : team1
@@ -33,7 +18,6 @@ Window {
         }
 
         players: [
-
             Defender{
                 name: "Player1"
                 position: "Middle Field"
@@ -54,13 +38,8 @@ Window {
                 position: "None"
                 playing: false
             }
-
-
-
         ]
     }
-
-
 
     ListView {
         anchors.fill: parent
@@ -79,11 +58,6 @@ Window {
             }
         }
     }
-
-
-
-
-
 
     Component.onCompleted: {
         console.log("We have :" + team1.players.length + " players in the team "+ team1.title)

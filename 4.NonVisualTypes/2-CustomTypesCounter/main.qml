@@ -1,42 +1,15 @@
-/*
-
-        . Using qmlRegisterType to register C++ types into the QML system
-
-                . The type becomes usable in QML like so :
-                        Counter{
-                            id : mCounter
-                        }
-
-                 . Properties decoarated with the Q_PROPERTY macro become accessible
-                    through QML :
-                        .             Text {
-                                        id: mText
-                                        text: mCounter.count // <<<<<==== We are accessing the count in QML
-                                        anchors.centerIn: parent
-                                        font.pointSize: 40
-                                        color: "white"
-                                    }
-
-        . Use the Qt5 course as a reference and improvise.
-
-  */
-
-
-
-
 import QtQuick
 import QtQuick.Controls
-//import com.blikoon.counter 1.0
-import com.blikoon.counter
+import CustomTypesCounter
 
 Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Register Non Visual Type")
+    title: qsTr("Counter Custom Type")
 
     Counter{
-        id : mCounter
+        id: counterId
     }
 
     Column{
@@ -46,12 +19,12 @@ Window {
         Rectangle{
             width: 200
             height: 200
-            radius: 20
-            color: (mCounter.count >= 0) ? "green": "red"
+            radius: 10
+            color: (counterId.count >= 0) ? "green": "red"
 
             Text {
                 id: mText
-                text: mCounter.count
+                text: counterId.count
                 anchors.centerIn: parent
                 font.pointSize: 40
                 color: "white"
@@ -62,14 +35,14 @@ Window {
             width: 200
             text : "Start"
             onClicked: {
-                mCounter.start()
+                counterId.start()
             }
         }
         Button{
             width: 200
             text : "Stop"
             onClicked: {
-                mCounter.stop()
+                counterId.stop()
             }
         }
 
@@ -77,7 +50,7 @@ Window {
             width: 200
             text : "Up"
             onClicked: {
-                mCounter.up = true;
+                counterId.up = true;
             }
         }
 
@@ -85,8 +58,9 @@ Window {
             width: 200
             text : "Down"
             onClicked: {
-                mCounter.up = false;
+                counterId.up = false;
             }
         }
+
     }
 }

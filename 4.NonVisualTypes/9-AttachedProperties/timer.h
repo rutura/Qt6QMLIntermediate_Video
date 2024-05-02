@@ -2,12 +2,15 @@
 #define TIMER_H
 
 #include <QObject>
+#include <QtQml>
 #include <qqml.h>
 #include "timerattached.h"
 
+//The attaching class: what we reference in QML files.
 class Timer : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit Timer(QObject *parent = nullptr);
 

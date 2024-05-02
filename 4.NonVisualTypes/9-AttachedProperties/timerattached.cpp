@@ -26,7 +26,6 @@ bool TimerAttached::running() const
 
 void TimerAttached::setInterval(int interval)
 {
-
     if (m_interval == interval)
         return;
 

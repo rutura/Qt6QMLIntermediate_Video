@@ -1,16 +1,3 @@
-/*
-        . Using the Connections element to handle signals comming
-                from exposed context properties from the C++ side.
-
-        . Start with callQML to make things a bit simpler
-        . Then use the timer to let the thing take off
-            on its own.
-
-
-
-  */
-
-
 import QtQuick
 import QtQuick.Controls
 
@@ -18,17 +5,15 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("C++ Signal Handled in QML")
+    title: qsTr("Cpp Signal")
 
     Connections{
         target: CppSignalSender
-        function onCallQml (parameter) {
-            console.log("This is QML : callQml signal cought")
-            mText.text = parameter;
+        function onCallQml(parameter){
+            console.log("This is QML: callQml signal cought.")
         }
-
-        function onCppTimer(value) {
-            mRectText.text = value;
+        function onCppTimer(value){
+             mRectText.text = value
         }
     }
 
@@ -37,7 +22,7 @@ Window {
             width: 200
             height: 200
             color: "red"
-            radius: 20
+            radius: 10
 
             Text{
                 id : mRectText
@@ -53,7 +38,6 @@ Window {
             onClicked: {
                 CppSignalSender.cppSlot()
             }
-
         }
 
         Text {

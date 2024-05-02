@@ -14,13 +14,13 @@ signals:
     void callQml(QString parameter);
     void cppTimer(QString value);
 
-public slots:
 
+public slots:
     void cppSlot();
 
 private:
-    QTimer * mTimer;
-    int mValue;
+    QTimer m_timer;
+    int m_value;
 };
 
 #endif // CPPSIGNALSENDER_H

@@ -5,18 +5,16 @@
 
 class CppWorker : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit CppWorker(QObject *parent = nullptr);
+    explicit CppWorker(QObject *parent = nullptr);
 
-  Q_INVOKABLE void regularMethod();
-
-  Q_INVOKABLE QString regularMethodWithReturn(QString name, int age);
-
-signals:
+    //Q_INVOKABLE
+    Q_INVOKABLE void regularMethod();
+    Q_INVOKABLE QString regularMethodWithReturn(QString name, int age);
 
 public slots:
-  void cppSlot();
+    void cppSlot();
 };
 
-#endif// CPPWORKER_H
+#endif // CPPWORKER_H

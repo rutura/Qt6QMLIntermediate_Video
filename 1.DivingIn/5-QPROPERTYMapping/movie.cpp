@@ -1,41 +1,31 @@
-#include <QDebug>
 #include "movie.h"
 
-Movie::Movie(QObject *parent) : QObject(parent),
-    m_title("Movie Title"),
-    m_mainCharacter("Main Character")
-{
-
-}
+Movie::Movie(QObject *parent)
+    : QObject{parent}
+{}
 
 QString Movie::mainCharacter() const
 {
-     qDebug() << "Getting the main character";
     return m_mainCharacter;
 }
 
-void Movie::setMainCharacter(QString mainCharacter)
+void Movie::setMainCharacter(const QString &newMainCharacter)
 {
-     qDebug() << "Setting the main character";
-    if (m_mainCharacter == mainCharacter)
+    if (m_mainCharacter == newMainCharacter)
         return;
-
-    m_mainCharacter = mainCharacter;
-    emit mainCharacterChanged(m_mainCharacter);
+    m_mainCharacter = newMainCharacter;
+    emit mainCharacterChanged();
 }
 
 QString Movie::title() const
 {
-   qDebug() << "Getting the title";
     return m_title;
 }
 
-void Movie::setTitle(QString title)
+void Movie::setTitle(const QString &newTitle)
 {
-     qDebug() << "Setting the title";
-    if (m_title == title)
+    if (m_title == newTitle)
         return;
-
-    m_title = title;
-    emit titleChanged(m_title);
+    m_title = newTitle;
+    emit titleChanged();
 }

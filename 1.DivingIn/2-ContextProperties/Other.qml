@@ -1,8 +1,8 @@
 import QtQuick
 
 Item {
-    Component.onCompleted: {
-        BWorker.cppSlot();
+    Component.onCompleted: function(){
+        BWorker.cppSlot()
     }
 
 }

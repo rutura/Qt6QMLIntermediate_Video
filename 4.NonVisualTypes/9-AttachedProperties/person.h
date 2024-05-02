@@ -2,10 +2,12 @@
 #define PERSON_H
 
 #include <QObject>
+#include <QtQml>
 
 class Person : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString  name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(int age READ age WRITE setAge NOTIFY ageChanged)
 

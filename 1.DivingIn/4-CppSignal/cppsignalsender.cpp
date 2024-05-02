@@ -1,17 +1,16 @@
 #include "cppsignalsender.h"
 
-CppSignalSender::CppSignalSender(QObject *parent) : QObject(parent),
-    mTimer(new QTimer(this)),
-    mValue(0)
+CppSignalSender::CppSignalSender(QObject *parent)
+    : QObject{parent},
+    m_timer(new QTimer(this)),
+    m_value(0)
 {
-    connect(mTimer,&QTimer::timeout,[=](){
-        ++mValue;
-        emit cppTimer(QString::number(mValue));
-
+    connect(&m_timer, &QTimer::timeout,[=](){
+        ++m_value;
+        emit cppTimer(QString::number(m_value));
     });
 
-    mTimer->start(1000);
-
+    m_timer.start(1000);
 }
 
 void CppSignalSender::cppSlot()

@@ -1,8 +1,7 @@
 #include <QGuiApplication>
-#include <QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "movie.h"
-
 
 int main(int argc, char *argv[])
 {
@@ -16,15 +15,14 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("Movie",&movie);
 
-    const QUrl url(u"qrc:/5-QPROPERTYMapping/main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    const QUrl url(u"qrc:/QPROPERTYMapping/Main.qml"_qs);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
     engine.load(url);
-
-
 
     return app.exec();
 }

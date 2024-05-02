@@ -2,6 +2,7 @@
 #define CPPCLASS_H
 
 #include <QObject>
+#include <QtQml>
 #include <QUrl>
 #include <QColor>
 #include <QFont>
@@ -12,19 +13,20 @@
 #include <QSizeF>
 #include <QRect>
 #include <QRectF>
-#include <QtQml/qqmlregistration.h>
 
 class CppClass : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
+
 public:
     explicit CppClass(QObject *parent = nullptr);
 
 signals:
-    void sendInt(int param);
-    void sendDouble(double doubleParam);
+    void sendInt(int parama);
+    void sendDouble(double param);
     void sendBoolRealFloat(bool boolparam, qreal realparam, float floatparam );
+
 
     void sendStringUrl(QString stringparam, QUrl urlparam);
     void sendColorFont(QColor colorparam,QFont fontparam);
@@ -34,13 +36,13 @@ signals:
     void sendRect( QRect rectparam, QRectF rectfparam);
 
 
+
 public slots:
     void cppSlot();
 
+    //Recieve data from QML
     void receivePoint(QPoint point);
-    void receiveRect(QRectF rect);
-
-
+    void receiveRect(QRect rect);
 };
 
 #endif // CPPCLASS_H

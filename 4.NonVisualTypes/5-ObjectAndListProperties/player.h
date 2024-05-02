@@ -2,10 +2,12 @@
 #define PLAYER_H
 
 #include <QObject>
+#include <QtQml>
 
 class Player : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(bool playing READ playing WRITE setPlaying NOTIFY playingChanged)

@@ -4,11 +4,13 @@
 #include <QObject>
 #include <QVector>
 #include <QQmlListProperty>
+#include <QtQml>
 #include <player.h>
 
 class FootBallTeam : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
     Q_PROPERTY(QString coatch READ coatch WRITE setCoatch NOTIFY coatchChanged)

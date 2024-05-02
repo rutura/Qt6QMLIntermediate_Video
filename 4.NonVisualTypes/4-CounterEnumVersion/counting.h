@@ -2,10 +2,13 @@
 #define COUNTING_H
 
 #include <QObject>
+#include <QtQml>
 
 class Counting : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("Can't do this")
 public:
     enum CountDirection {
         UP,

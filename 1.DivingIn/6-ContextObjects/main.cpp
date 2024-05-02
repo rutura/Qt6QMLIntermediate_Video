@@ -1,8 +1,7 @@
 #include <QGuiApplication>
-#include <QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "propertywrapper.h"
-
 
 int main(int argc, char *argv[])
 {
@@ -10,29 +9,27 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+
     /*
     QString lastName = "Doe";
     QString firstName = "John";
+
+    engine.rootContext()->setContextProperty("lastname",QVariant::fromValue(lastName));
+    engine.rootContext()->setContextProperty("firstname",QVariant::fromValue(firstName));
     */
 
-    PropertyWrapper propWrapper;
-    propWrapper.setLastname("Doe");
-    propWrapper.setFirstname("John");
+    PropertyWrapper wrapper;
+    wrapper.setLastname("Doe");
+    wrapper.setFirstname("John");
+    engine.rootContext()->setContextObject(&wrapper);
 
-
-    /*
-    engine.rootContext()->setContextProperty("mLastname",QVariant::fromValue(lastName));
-    engine.rootContext()->setContextProperty("mFirstname",QVariant::fromValue(firstName));
-    */
-    engine.rootContext()->setContextObject(&propWrapper);
-
-
-    const QUrl url(u"qrc:/6-ContextObjects/main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    const QUrl url(u"qrc:/ContextObjects/Main.qml"_qs);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
     engine.load(url);
 
     return app.exec();

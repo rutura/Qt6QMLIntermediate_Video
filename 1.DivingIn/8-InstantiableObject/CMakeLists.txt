@@ -8,22 +8,21 @@ find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup()
 
-add_subdirectory(module)
-
-qt_add_executable(app8-InstantiableObject
+qt_add_executable(appInstantiableObject
     main.cpp
 )
 
-qt_add_qml_module(app8-InstantiableObject
-    URI 8-InstantiableObject
+qt_add_qml_module(appInstantiableObject
+    URI InstantiableObject
     VERSION 1.0
     QML_FILES Main.qml
+    SOURCES movie.h movie.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
-set_target_properties(app8-InstantiableObject PROPERTIES
+set_target_properties(appInstantiableObject PROPERTIES
 #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.app8-InstantiableObject
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -31,12 +30,12 @@ set_target_properties(app8-InstantiableObject PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(app8-InstantiableObject
-    PRIVATE Qt6::Quick myModuleLibplugin
+target_link_libraries(appInstantiableObject
+    PRIVATE Qt6::Quick
 )
 
 include(GNUInstallDirs)
-install(TARGETS app8-InstantiableObject
+install(TARGETS appInstantiableObject
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

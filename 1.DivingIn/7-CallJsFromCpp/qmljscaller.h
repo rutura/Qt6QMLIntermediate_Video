@@ -11,14 +11,12 @@ public:
 
     Q_INVOKABLE void cppMethod(QString parameter);
 
-    void setQmlRootObject(QObject *value);
+    void setQmlRoostObject(QObject * value);
 
 signals:
-
-public slots:
 private:
     void callJSMethod(QString param);
-    QObject * qmlRootObject ;
+    QObject * qmlRootObject;
 };
 
 #endif // QMLJSCALLER_H

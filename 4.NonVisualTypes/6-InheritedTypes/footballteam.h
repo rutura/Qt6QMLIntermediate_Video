@@ -3,12 +3,14 @@
 
 #include <QObject>
 #include <QVector>
+#include <QtQml>
 #include <QQmlListProperty>
 #include <player.h>
 
 class FootBallTeam : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
     Q_PROPERTY(QString coatch READ coatch WRITE setCoatch NOTIFY coatchChanged)
@@ -43,18 +45,12 @@ signals:
     void captainChanged(Player * captain);
     void playersChanged();
 
-
-
-
 private:
     //Callback Methods
     static void appendPlayer(QQmlListProperty<Player>*, Player*);
     static qsizetype playerCount(QQmlListProperty<Player>*);
     static Player* player(QQmlListProperty<Player>*, qsizetype);
     static void clearPlayers(QQmlListProperty<Player>*);
-
-
-
 
     QString m_title;
     QString m_coatch;

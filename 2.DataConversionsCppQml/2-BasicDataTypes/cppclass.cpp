@@ -1,17 +1,17 @@
-#include <QDebug>
 #include "cppclass.h"
+#include <QDebug>
 
-CppClass::CppClass(QObject *parent) : QObject(parent)
-{
-
-}
+CppClass::CppClass(QObject *parent)
+    : QObject{parent}
+{}
 
 void CppClass::cppSlot()
 {
     qDebug() << "cppSlot called";
     emit sendInt(123);
-    emit sendDouble(123.45);
-    emit sendBoolRealFloat(true,34.12,456.2);
+    emit sendDouble(123.44);
+    emit sendBoolRealFloat(true,2.11, 3.3 );
+
     emit sendStringUrl("String from C++",QUrl("http://www.blikoontech.com"));
 
     emit sendColorFont(QColor(123,20,30),QFont("Times", 20, QFont::Bold));
@@ -31,7 +31,7 @@ void CppClass::receivePoint(QPoint point)
     qDebug() << "Received point from QML :" << point ;
 }
 
-void CppClass::receiveRect(QRectF rect)
+void CppClass::receiveRect(QRect rect)
 {
     qDebug() << "Received rect from QML :" << rect ;
 }

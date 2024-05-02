@@ -3,32 +3,29 @@
 #include <QQmlContext>
 #include "qmljscaller.h"
 
-
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
 
-    QmlJSCaller jsCaller;
-
-    engine.rootContext()->setContextProperty("QmlJsCaller",&jsCaller);
-
-    const QUrl url(u"qrc:/7-CallJsFromCpp/main.qml"_qs);
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    QmlJSCaller caller;
+    engine.rootContext()->setContextProperty("QmlJsCaller",&caller);
+    const QUrl url(u"qrc:/CallJsFromCpp/Main.qml"_qs);
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
     engine.load(url);
 
-    auto rootObjcts = engine.rootObjects();
+    auto rootObjects = engine.rootObjects();
 
-    if (engine.rootObjects().isEmpty()){
-       return -1;
+    if(engine.rootObjects().isEmpty()){
+        return -1 ;
     }else{
-        //--!!!!!!!Should make sure this is SET !!!!!!!!!!!!!!--
-        jsCaller.setQmlRootObject(rootObjcts[0]);
+        caller.setQmlRoostObject(rootObjects[0]);
     }
 
     return app.exec();
